@@ -49,6 +49,29 @@ author: voidzhang
 
 ## 工作流程
 
+### Step 0: 📂 课题初始化
+
+每个调研任务自动创建独立课题工作区：
+
+1. 从用户描述中提取课题关键词，转为 kebab-case 目录名
+2. 创建 `projects/{课题名}/input/` 和 `projects/{课题名}/output/` 目录
+3. 将用户提供的附件复制/移动到 `input/` 目录
+4. 后续所有输出报告写入 `output/` 目录
+
+```
+示例：用户说 "帮我分析 AI 眼镜市场"
+→ 创建 projects/ai-glasses/input/
+→ 创建 projects/ai-glasses/output/
+→ 附件存入 input/
+→ 报告输出到 output/
+```
+
+命名规则：
+- 中文提取关键词 → 翻译为英文 → kebab-case
+- "动力电池行业" → `ev-battery`
+- "AI Agent 赛道" → `ai-agent-market`
+- 如果目录已存在，复用（追加新文件到 input/）
+
 ### Step 1: 📥 文件解析
 
 识别用户提供的文件格式，自动选择解析方式：

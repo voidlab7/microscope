@@ -17,14 +17,18 @@ Thumbs.db
 *.swp
 *.swo
 
-# Examples input files (large binary)
-examples/*/input/*.pdf
-examples/*/input/*.xlsx
-examples/*/input/*.png
-examples/*/input/*.jpg
+# Projects input files (large binary, user-specific)
+projects/*/input/*.pdf
+projects/*/input/*.xlsx
+projects/*/input/*.xls
+projects/*/input/*.png
+projects/*/input/*.jpg
+projects/*/input/*.jpeg
+projects/*/input/*.docx
+projects/*/input/*.doc
 
-# Examples output files (generated)
-examples/*/output/
+# Projects output files (generated, can be reproduced)
+projects/*/output/
 
 # Memory (personal, not shared)
 memory/

@@ -41,8 +41,8 @@ MicroScope/
 │   ├── dotagents/        → .agents Protocol 安装说明
 │   └── oaf/              → OAF 安装说明
 ├── tools/                → 🔧 工具脚本（Phase 2）
-├── examples/             → 📁 示例
-│   └── ai-glasses/       → AI 眼镜行业调研案例
+├── projects/             → 📁 课题工作区（每个课题独立 input/output）
+│   └── ai-glasses/       → 示例课题：AI 眼镜行业
 │       ├── input/        → 原始文件（PDF/Excel/图片）
 │       └── output/       → 产出报告（MD/HTML/Excel）
 ├── docs/                 → 📚 设计文档
@@ -75,10 +75,71 @@ cp MicroScope/skills/*.md .agents/skills/
 
 ## 使用
 
+### 开启一个新课题
+
+每个调研课题自动创建独立的工作区（input + output）：
+
+```bash
+# 自动创建课题目录结构
+MicroScope/
+└── projects/
+    └── ai-glasses/          ← 课题名称（自动从用户描述提取）
+        ├── input/           ← 📥 放入原始文件（PDF/Excel/图片/Word）
+        └── output/          ← 📤 自动输出报告（MD/Excel/HTML）
+```
+
+### 使用方式
+
 ```
 @MicroScope 帮我分析 AI 眼镜市场
 + 附件：PDF、Excel、图片
 ```
+
+MicroScope 会自动：
+1. 创建 `projects/ai-glasses/input/` 目录，将附件存入
+2. 解析所有输入文件
+3. 网络搜索补全企业信息
+4. 结构化分析
+5. 将报告输出到 `projects/ai-glasses/output/`
+
+### 课题目录示例
+
+```
+projects/
+├── ai-glasses/              ← 课题 1：AI 眼镜
+│   ├── input/
+│   │   ├── 市场报告.pdf
+│   │   ├── 企业数据.xlsx
+│   │   └── 配图.png
+│   └── output/
+│       ├── 市场分析报告.md
+│       ├── 企业汇总表.xlsx
+│       └── 可视化报告.html
+│
+├── ev-battery/              ← 课题 2：动力电池
+│   ├── input/
+│   │   └── 行业研报.pdf
+│   └── output/
+│       ├── 市场分析报告.md
+│       └── 企业汇总表.xlsx
+│
+└── ai-agent-market/         ← 课题 3：AI Agent 市场
+    ├── input/
+    │   ├── 融资数据.xlsx
+    │   └── 竞品截图.png
+    └── output/
+        └── 市场分析报告.md
+```
+
+### 课题命名规则
+
+| 用户输入 | 课题目录名 |
+|---------|----------|
+| "帮我分析 AI 眼镜市场" | `ai-glasses` |
+| "调研一下动力电池行业" | `ev-battery` |
+| "看看 AI Agent 赛道" | `ai-agent-market` |
+
+从用户描述中提取关键词，转为英文短横线格式（kebab-case）。
 
 ## 许可
 
