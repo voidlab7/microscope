@@ -1,0 +1,33 @@
+# Dependencies
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temp files
+~$*
+*.swp
+*.swo
+
+# Examples input files (large binary)
+examples/*/input/*.pdf
+examples/*/input/*.xlsx
+examples/*/input/*.png
+examples/*/input/*.jpg
+
+# Examples output files (generated)
+examples/*/output/
+
+# Memory (personal, not shared)
+memory/
+
+# Environment
+.env
