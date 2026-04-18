@@ -18,14 +18,14 @@ Thumbs.db
 *.swo
 
 # Projects input files (large binary, user-specific)
-projects/*/input/*.pdf
-projects/*/input/*.xlsx
-projects/*/input/*.xls
-projects/*/input/*.png
-projects/*/input/*.jpg
-projects/*/input/*.jpeg
-projects/*/input/*.docx
-projects/*/input/*.doc
+# projects/*/input/*.pdf
+# projects/*/input/*.xlsx
+# projects/*/input/*.xls
+# projects/*/input/*.png
+# projects/*/input/*.jpg
+# projects/*/input/*.jpeg
+# projects/*/input/*.docx
+# projects/*/input/*.doc
 
 # Projects output files (generated, can be reproduced)
 projects/*/output/
