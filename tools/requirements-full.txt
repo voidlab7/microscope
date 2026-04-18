@@ -1,0 +1,11 @@
+# MicroScope 完整依赖（含 OCR）
+# pip install -r requirements-full.txt
+
+-r requirements.txt
+
+# OCR 引擎（强烈建议安装）
+paddlepaddle>=2.6.0       # PaddleOCR 运行时 (~500MB)
+paddleocr>=2.8.0          # OCR 引擎 (首次运行下载 ~100MB 模型)
+
+# PDF 增强
+marker-pdf>=0.3.0         # PDF→Markdown 全格式转换（表格+公式+图表）

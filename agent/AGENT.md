@@ -58,7 +58,7 @@ author: voidzhang
 
 ## 工作流程
 
-### Step 0: 📂 课题初始化
+### Step 0: 📂 课题初始化 + 环境检查
 
 每个调研任务自动创建独立课题工作区：
 
@@ -66,6 +66,7 @@ author: voidzhang
 2. 创建 `projects/{课题名}/input/` 和 `projects/{课题名}/output/` 目录
 3. 将用户提供的附件复制/移动到 `input/` 目录
 4. 后续所有输出报告写入 `output/` 目录
+5. **运行环境依赖检查（强制）**
 
 ```
 示例：用户说 "帮我分析 AI 眼镜市场"
@@ -73,6 +74,37 @@ author: voidzhang
 → 创建 projects/ai-glasses/output/
 → 附件存入 input/
 → 报告输出到 output/
+→ 运行环境检查
+```
+
+#### 环境依赖检查（初始化时强制执行）
+
+运行 `python3 tools/setup-check.py` 或逐项检测：
+
+```bash
+# 基础依赖
+python3 -c "import pdfplumber; print('✅ pdfplumber')" 2>/dev/null || echo "❌ pdfplumber"
+python3 -c "import pypdf; print('✅ pypdf')" 2>/dev/null || echo "❌ pypdf"
+python3 -c "import pandas; print('✅ pandas')" 2>/dev/null || echo "❌ pandas"
+python3 -c "import openpyxl; print('✅ openpyxl')" 2>/dev/null || echo "❌ openpyxl"
+python3 -c "import jinja2; print('✅ jinja2')" 2>/dev/null || echo "❌ jinja2"
+
+# OCR 引擎（如果输入含图片）
+python3 -c "from paddleocr import PaddleOCR; print('✅ PaddleOCR')" 2>/dev/null || echo "❌ PaddleOCR"
+```
+
+**缺少依赖时的提醒：**
+
+```
+⚠️ MicroScope 环境检查：缺少依赖
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+缺少: pdfplumber, pandas（基础依赖）
+安装: pip install -r tools/requirements.txt
+
+缺少: paddleocr（OCR 引擎，强烈建议）
+安装: pip install -r tools/requirements-full.txt
+
+详见: tools/DEPENDENCIES.md
 ```
 
 命名规则：

@@ -1,7 +1,7 @@
 ---
 id: image-ocr
 name: 图片 OCR 识别
-description: 从图片中识别表格和文字，转为结构化数据
+description: 双引擎交叉验证——模型视觉 + PaddleOCR 校验，确保识别准确性
 enabled: true
 ---
 
@@ -17,50 +17,94 @@ enabled: true
 - 表格 → Markdown 表格
 - 文字 → 结构化文本
 - 图表 → 数据描述
+- 交叉验证报告（模型 vs PaddleOCR 差异标注）
 
-## 流程（自动降级）
+## 核心策略：双引擎交叉验证
+
+> **铁律：任何图片 OCR 结果，必须经过至少两次独立识别验证。**
+> 模型视觉能力因厂商不同差异巨大（Claude 强、MiniMax 弱），不能假设模型一定能识别。
 
 ```
-检测当前环境：
-  ↓
-路径 A: 模型支持多模态（Claude/GPT-4V）？
-  → 直接用 read_file 读取图片，模型"看图识字"
-  → 适合简单截图、照片、少量图片
-
-路径 B: PaddleOCR 已安装？
-  → 调用 PaddleOCR / PP-Structure 精确识别
-  → 适合复杂中文表格、批量图片、高精度需求
-
-路径 C: 都不行？
-  → 提示用户：
-    "当前模型不支持图片输入，建议安装 PaddleOCR：
-     pip install paddlepaddle paddleocr
-     详见 tools/paddleocr-install-guide.md"
-  → 跳过图片，继续处理其他文件
+┌─────────────────────────────────────────────────────┐
+│                   图片 OCR 流程                       │
+│                                                       │
+│  Step 1: 模型视觉识别（主引擎）                        │
+│    ├─ 成功 → 产出结果 A                               │
+│    └─ 失败/无法识别 → 标记"模型跳过"                   │
+│                                                       │
+│  Step 2: PaddleOCR 校验（校验引擎，强制执行）           │
+│    ├─ PaddleOCR 已安装 → 产出结果 B                   │
+│    └─ PaddleOCR 未安装 → ⚠️ 提示安装并降级            │
+│                                                       │
+│  Step 3: 交叉比对                                     │
+│    ├─ A ≈ B → 高置信度，标注 [OCR:双引擎验证]         │
+│    ├─ A ≠ B → 标注差异，标 ⚠️ 让用户判断              │
+│    ├─ 仅有 A → 标注 [OCR:模型视觉,未校验]            │
+│    └─ 仅有 B → 标注 [OCR:PaddleOCR]                  │
+└─────────────────────────────────────────────────────┘
 ```
 
-### 路径 A 详细步骤（多模态模型）
-1. 使用 read_file 读取图片
+## 详细步骤
+
+### Step 1: 模型视觉识别（主引擎）
+
+1. 使用 `read_file` 读取图片文件
 2. 让模型识别图片内容（表格/文字/图表）
 3. 表格 → 要求模型输出 Markdown table
 4. 文字 → 要求模型输出结构化文本
-5. 标注"[OCR:模型视觉]"来源
+5. 记录识别结果为 `结果 A`
+6. 如果模型无法识别图片（如 MiniMax 等纯文本模型）→ 标记"模型跳过"，直接进入 Step 2
 
-### 路径 B 详细步骤（PaddleOCR）
-1. 使用 PaddleOCR 识别图片
-2. 表格区域 → PP-Structure → Markdown table
-3. 文字区域 → OCR 提取并组织
-4. 标注识别置信度和"[OCR:PaddleOCR]"来源
+### Step 2: PaddleOCR 校验（校验引擎）
+
+**无论 Step 1 是否成功，都必须执行此步骤。**
+
+1. 检测 PaddleOCR 是否已安装：
+   ```python
+   python3 -c "from paddleocr import PaddleOCR; print('OK')"
+   ```
+2. **已安装** → 调用 PaddleOCR 识别：
+   - 表格区域 → PP-Structure → Markdown table
+   - 文字区域 → OCR 提取并组织
+   - 记录识别结果为 `结果 B`，附带置信度
+3. **未安装** → 输出强制提醒：
+   ```
+   ⚠️ [OCR] PaddleOCR 未安装，无法进行交叉验证！
+   图片识别结果仅依赖模型视觉，准确性无法保证。
+   
+   强烈建议安装：
+     pip install paddlepaddle paddleocr
+   
+   详见 tools/paddleocr-install-guide.md
+   ```
+   - 如果 Step 1 也失败 → 跳过图片，报错并继续处理其他文件
+
+### Step 3: 交叉比对 & 标注
+
+| 情况 | 结果 A（模型） | 结果 B（PaddleOCR） | 处理方式 |
+|------|-------------|------------------|---------|
+| 双引擎一致 | ✅ 有 | ✅ 有 | 高置信度，标注 `[OCR:双引擎验证]` |
+| 双引擎冲突 | ✅ 有 | ✅ 有（不同） | 列出两份结果，标 `⚠️` 差异区域，让用户判断 |
+| 仅模型成功 | ✅ 有 | ❌ 未安装 | 使用模型结果，标注 `[OCR:模型视觉,未校验]` |
+| 仅 OCR 成功 | ❌ 模型跳过 | ✅ 有 | 使用 OCR 结果，标注 `[OCR:PaddleOCR]` |
+| 双引擎失败 | ❌ | ❌ | 报错，跳过此图片 |
+
+**冲突处理原则：**
+- 数字/金额/日期 → 优先相信 PaddleOCR（精确文字识别更可靠）
+- 表格结构/合并单元格 → 优先相信模型视觉（理解布局能力更强）
+- 中文公司名称 → 优先相信 PaddleOCR（字符级识别更准确）
 
 ## 工具依赖
 
-**必需**：无（多模态模型自带图片识别）
-
-**可选增强**（复杂中文表格/批量处理/离线运行）：
+**强烈建议安装**（双引擎交叉验证需要）：
 - `paddleocr` + `paddlepaddle`
 - 安装指引：`tools/paddleocr-install-guide.md`
 
 ```bash
-# 可选安装
+# 强烈建议安装（交叉验证必需）
 pip install paddlepaddle paddleocr
 ```
+
+**降级模式**（PaddleOCR 未安装时）：
+- 仅依赖模型视觉能力，结果标注 `[OCR:模型视觉,未校验]`
+- 如果模型也不支持图片 → 完全跳过图片文件

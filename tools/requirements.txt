@@ -1,0 +1,8 @@
+# MicroScope 基础依赖
+# pip install -r requirements.txt
+
+pdfplumber>=0.10.0        # PDF 表格提取
+pypdf>=4.0.0              # PDF 读写
+pandas>=2.0.0             # 数据处理
+openpyxl>=3.1.0           # Excel 读写
+jinja2>=3.1.0             # 模板引擎
