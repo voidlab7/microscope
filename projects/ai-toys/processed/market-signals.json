@@ -1,0 +1,32 @@
+[
+  {
+    "signal": "智能玩具市场已有百亿美元级规模，仍保持双位数增长",
+    "evidence": "Grand View Research 估计 2023 年全球智能玩具市场 123.7 亿美元，2030 年 255.4 亿美元，2024-2030 CAGR 11.5%",
+    "source": "https://www.grandviewresearch.com/industry-analysis/smart-toys-market-report",
+    "confidence": "高"
+  },
+  {
+    "signal": "中国 AI 玩具进入产业化加速期",
+    "evidence": "新华网转载证券时报称广东省玩具协会数据：2025 年国内 AI 玩具市场规模 290 亿元，2030 年有望突破千亿元",
+    "source": "https://www.news.cn/shshpd/20260414/cbcfffce6ecc4edbba16dbf4ef2f9a55/c.html",
+    "confidence": "中高"
+  },
+  {
+    "signal": "大厂和 IP 公司开始进入，AI 玩具从创业尝试进入品牌化阶段",
+    "evidence": "Mattel 与 OpenAI 于 2025-06-12 宣布战略合作，开发 AI-powered products and experiences",
+    "source": "https://corporate.mattel.com/news/mattel-and-openai-announce-strategic-collaboration",
+    "confidence": "高"
+  },
+  {
+    "signal": "安全、隐私、儿童心理风险会成为行业门槛",
+    "evidence": "剑桥大学报告建议对生成式 AI 玩具建立安全标准和安全标识，强调真实儿童测试、隐私透明和家长陪同",
+    "source": "https://www.cam.ac.uk/stories/ai-toys-study-play",
+    "confidence": "高"
+  },
+  {
+    "signal": "产品路线分化：整机玩具、AI 模组、外挂挂件",
+    "evidence": "36氪总结 Curio、FoloToy、BubblePal、字节显眼包等产品形态，显示 AI 玩具赛道已经卷起来",
+    "source": "https://www.36kr.com/p/3047381094566788",
+    "confidence": "中高"
+  }
+]

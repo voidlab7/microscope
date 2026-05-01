@@ -1,0 +1,29 @@
+{
+  "id": "ai-toys",
+  "name": "AI 玩具行业调研",
+  "mode": "industry-research",
+  "topic": "AI 玩具",
+  "target_user": "投资研究 / 咨询 / 产品战略",
+  "platforms": ["web"],
+  "created_at": "2026-05-01",
+  "updated_at": "2026-05-01T17:30:00",
+  "status": "completed",
+  "workflow": "industry-research",
+  "version": "0.1",
+  "entry": "CodeBuddy-first",
+  "outputs": [
+    "output/industry-report.md",
+    "output/report.md",
+    "output/summary.md",
+    "output/product-opportunity.md",
+    "processed/market-signals.json",
+    "processed/companies.json",
+    "processed/investment-thesis.json",
+    "processed/opportunities.json"
+  ],
+  "mode_boundary": {
+    "main_report": "investment-facing industry research",
+    "product_opportunity": "separate appendix only",
+    "forbidden_in_main_report": ["MicroLab MVP", "小红书验证笔记", "MicroPub Brief", "个人团队产品路线"]
+  }
+}

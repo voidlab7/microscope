@@ -35,3 +35,10 @@ memory/
 
 # Environment
 .env
+
+# Runtime artifacts
+.viewer-server.log
+.viewer-server.pid
+
+# CodeBuddy local adapter (generated per-workspace)
+.codebuddy/

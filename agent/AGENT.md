@@ -56,6 +56,36 @@ author: voidzhang
 
 ---
 
+## 产品边界（强制）
+
+MicroScope 现在只做 **Industry Research 投资向行业调研**。
+
+| 产品 | 职责 | 主输出 |
+|---|---|---|
+| `MicroScope` | 行业调研、市场分析、产业链、竞争格局、投资判断 | `output/industry-report.md` |
+| `MicroRadar` | 内容机会、选题、小红书需求、产品机会、MicroPub Brief | `output/report.md` + `output/micropub-briefs.json` |
+| `MicroEngine` | 共享底座：采集、解析、补全、引用、报告生成规范 | 供上层产品复用 |
+
+MicroScope 主报告禁止混入：
+
+```text
+MicroLab MVP
+小红书选题
+MicroPub Brief
+个人产品路线
+内容验证笔记
+```
+
+如果用户要“内容机会/选题/小红书需求/产品机会”，应切到 `products/MicroRadar/` 的工作流。
+
+行业调研执行前读取：
+
+```text
+workflows/industry-research.md
+```
+
+---
+
 ## 工作流程
 
 ### Step 0: 📂 课题初始化 + 环境检查

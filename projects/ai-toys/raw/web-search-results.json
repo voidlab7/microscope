@@ -1,0 +1,52 @@
+{
+  "topic": "AI 玩具",
+  "sources": [
+    {
+      "title": "Grand View Research - Smart Toys Market Report",
+      "url": "https://www.grandviewresearch.com/industry-analysis/smart-toys-market-report",
+      "key_points": [
+        "2023 年全球智能玩具市场规模 123.7 亿美元",
+        "2024 年市场规模 132.9 亿美元",
+        "2030 年预测 255.4 亿美元",
+        "2024-2030 CAGR 11.5%"
+      ]
+    },
+    {
+      "title": "Mattel and OpenAI Announce Strategic Collaboration",
+      "url": "https://corporate.mattel.com/news/mattel-and-openai-announce-strategic-collaboration",
+      "key_points": [
+        "2025-06-12 Mattel 与 OpenAI 宣布战略合作",
+        "合作目标是基于 Mattel 品牌开发 AI-powered products and experiences",
+        "强调适龄、隐私、安全、信息安全"
+      ]
+    },
+    {
+      "title": "新华网转载证券时报：陪伴背后的千亿蓝海市场 AI玩具在争议中茁壮成长",
+      "url": "https://www.news.cn/shshpd/20260414/cbcfffce6ecc4edbba16dbf4ef2f9a55/c.html",
+      "key_points": [
+        "广东省玩具协会数据：2025 年国内 AI 玩具市场规模 290 亿元",
+        "预计 2030 年突破千亿元，年复合增长率超过 20%",
+        "2025 年以来 AI 玩具融资事件超过 50 起，融资金额超过 200 亿元",
+        "主流商业模式为硬件+会员/内容订阅"
+      ]
+    },
+    {
+      "title": "Cambridge - Report calls for AI toy safety standards to protect young children",
+      "url": "https://www.cam.ac.uk/stories/ai-toys-study-play",
+      "key_points": [
+        "建议对可与儿童类人对话的生成式 AI 玩具建立更严格安全标准",
+        "强调儿童隐私、心理安全、真实儿童测试和家长陪同使用",
+        "不建议 AI 玩具替代成人陪伴"
+      ]
+    },
+    {
+      "title": "36氪 - 马斯克前女友看好的AI玩具生意，在国内卷起来了",
+      "url": "https://www.36kr.com/p/3047381094566788",
+      "key_points": [
+        "AI 玩具形态包括整机型 AI 毛绒玩具、AI 模组/机芯、外挂挂件",
+        "代表产品包括 Curio Grok/Grem/Gabbo、FoloToy Magicbox、BubblePal、字节显眼包",
+        "竞争焦点从玩具外形转向 AI 体验、角色人格、家长控制和安全"
+      ]
+    }
+  ]
+}

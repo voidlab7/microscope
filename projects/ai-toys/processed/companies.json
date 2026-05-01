@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Mattel + OpenAI",
+    "region": "美国",
+    "type": "大厂/IP 公司 + AI 模型合作",
+    "product": "AI-powered products and experiences，具体首款产品未公开",
+    "positioning": "基于 Barbie、Hot Wheels 等全球 IP 的 AI 玩乐体验",
+    "strength": "强 IP、渠道、家庭信任、OpenAI 技术合作",
+    "risk": "儿童安全和隐私要求高，产品细节未公开",
+    "source": "https://corporate.mattel.com/news/mattel-and-openai-announce-strategic-collaboration"
+  },
+  {
+    "name": "Curio",
+    "region": "海外",
+    "type": "AI 毛绒玩具品牌",
+    "product": "Grok / Grem / Gabbo",
+    "positioning": "无屏幕 AI 陪伴毛绒玩具，角色人格与自由对话",
+    "price": "99 美元 [36氪转述]",
+    "strength": "角色设定、明星背书、OpenAI 模型、儿童陪伴场景",
+    "risk": "替代家长陪伴争议、儿童隐私与内容安全",
+    "source": "https://www.36kr.com/p/3047381094566788"
+  },
+  {
+    "name": "FoloToy",
+    "region": "中国",
+    "type": "AI 玩具模组/机芯方案商",
+    "product": "Magicbox 魔匣、Fofo、Meow、Octopus、Cactus、Kola 等",
+    "positioning": "把普通玩具改造成 AI 对话玩具的底层模组",
+    "price": "Magicbox 最低约 10 元；AI 仙人掌约 258 元 [36氪转述]",
+    "strength": "低成本、可改造存量玩具、支持多模型、适合 B 端玩具厂商",
+    "risk": "品牌感弱、体验依赖玩具本体/网络/模型，可能陷入价格竞争",
+    "source": "https://www.36kr.com/p/3047381094566788"
+  },
+  {
+    "name": "BubblePal / 跃然创新",
+    "region": "中国",
+    "type": "AI 外挂挂件/吊坠",
+    "product": "BubblePal",
+    "positioning": "挂在已有毛绒玩具上的 AI 陪伴挂件，支持角色、长期记忆和家长报告",
+    "price": "定价 449 元，淘宝约 419 元；模型功能月费 9.9 元或一次性 999 元 [36氪转述]",
+    "strength": "复用孩子已有玩具，降低情感迁移成本，适合订阅和 App 生态",
+    "risk": "硬件价格不低，会员费争议，IP 授权和隐私安全压力",
+    "source": "https://www.36kr.com/p/3047381094566788"
+  },
+  {
+    "name": "字节跳动/火山引擎 显眼包",
+    "region": "中国",
+    "type": "大厂技术验证 / 客户礼物",
+    "product": "显眼包 AI 玩具",
+    "positioning": "基于豆包大模型、扣子、语音识别/合成和 FoloToy 机芯的 AI 陪伴玩具实验",
+    "strength": "大模型、智能体平台和语音技术能力强，可快速进入玩具场景",
+    "risk": "非正式商品；自动唤醒存在监听风险，响应速度依赖网络",
+    "source": "https://www.36kr.com/p/3047381094566788"
+  },
+  {
+    "name": "MONTEE / 哥大维多智能科技",
+    "region": "中国",
+    "type": "儿童 AI 故事机",
+    "product": "MONTEE AI 沉浸式故事机",
+    "positioning": "面向儿童的 AI 沉浸式故事与陪伴设备",
+    "strength": "儿童陪伴与故事内容场景明确",
+    "risk": "需要持续内容、安全过滤和家长信任",
+    "source": "https://www.news.cn/shshpd/20260414/cbcfffce6ecc4edbba16dbf4ef2f9a55/c.html"
+  }
+]
